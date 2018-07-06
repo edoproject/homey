@@ -1,0 +1,35 @@
+version: '2'
+services:
+  loco_core:
+    container_name: loco_core
+    image: java:8u111-jdk-alpine
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - $WORKSPACE/logs/core:/loco/log
+      - $WORKSPACE/core/target/loco-0.1.0.jar:/loco/loco.jar
+    depends_on:
+      - postgres
+    command: ["java", "-jar", "/loco/loco.jar"]
+    networks:
+      - loconet
+    restart: "no"
+
+  postgres:
+    container_name: loco_postgres
+    image: postgres:9.5
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - $WORKSPACE/docker/images/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+      - $WORKSPACE/docker/images/postgres/postgresql.conf:/etc/postgresql/postgresql.conf
+      - $WORKSPACE/logs/postgres:/var/log/postgres
+    networks:
+      - loconet
+    command: -p 3306 -c 'config_file=/etc/postgresql/postgresql.conf'
+
+networks:
+  loconet:
+

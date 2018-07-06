@@ -1,1 +1,4 @@
-/target/
+/core/target/
+/core/.idea/
+/core/loco.iml
+/logs/
