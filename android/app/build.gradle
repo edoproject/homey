@@ -1,5 +1,12 @@
 apply plugin: 'com.android.application'
 
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
