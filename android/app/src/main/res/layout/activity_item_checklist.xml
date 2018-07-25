@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChecklistActivity"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <com.github.florent37.shapeofview.shapes.ArcView
+        android:id="@+id/arc_head_checklist_view"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:elevation="4dp"
+        app:shape_arc_cropDirection="outside"
+        app:shape_arc_height="10dp"
+        app:shape_arc_position="bottom"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gradient_dark_blue_magenta" />
+
+        <TextView
+            android:id="@+id/arc_head_checklist_head_text"
+            android:text="Do the items list"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_width="134dp"
+            android:layout_height="19dp"
+            />
+
+        <TextView
+            android:id="@+id/arc_head_checklist_body_text"
+            android:text="Check, what you already have at hole and what is in the new apartment."
+            android:layout_gravity="center"
+            android:textSize="12dp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_width="296dp"
+            android:layout_height="35dp"
+            />
+
+    </com.github.florent37.shapeofview.shapes.ArcView>
+
+
+
+    <TextView
+        android:id="@+id/textInOld"
+        android:layout_below="@id/arc_head_checklist_view"
+        android:layout_toLeftOf="@id/textInNew"
+        android:layout_marginRight="5dp"
+        android:text="I already have"
+        android:textSize="10dp"
+        android:textColor="@color/colorBlueItemText"
+        android:textAlignment="center"
+        android:layout_width="40dp"
+        android:layout_height="31dp" />
+
+    <TextView
+        android:id="@+id/textInNew"
+        android:layout_below="@id/arc_head_checklist_view"
+        android:layout_toLeftOf="@id/textRemoveFromTheList"
+        android:layout_marginRight="0dp"
+        android:text="in new appartment"
+        android:textSize="10dp"
+        android:textColor="@color/colorBlueItemText"
+        android:textAlignment="center"
+        android:layout_width="56dp"
+        android:layout_height="31dp" />
+
+    <TextView
+        android:id="@+id/textRemoveFromTheList"
+        android:layout_below="@id/arc_head_checklist_view"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:textAlignment="center"
+        android:text="remove it"
+        android:textSize="10dp"
+        android:textColor="@color/colorBlueItemText"
+        android:layout_width="40dp"
+        android:layout_height="31dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/item_checklist_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textRemoveFromTheList"
+        />
+
+</RelativeLayout>

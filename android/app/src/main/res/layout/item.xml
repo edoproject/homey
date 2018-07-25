@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemChecklistRowLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorLightGrayItemRows">
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Item"
+            android:textSize="12dp"
+            android:textColor="@color/colorBlueItemText"
+            android:paddingTop="9dp"
+            android:paddingLeft="16dp"
+            android:layout_alignParentLeft="true" />
+
+        <ImageView
+            android:id="@+id/itemAlreadyHave"
+            android:layout_width="24dp"
+            android:layout_height="21dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_toStartOf="@+id/itemInNewApartment"
+            android:tint="@color/colorMediumGrayItemsIcon"
+            app:srcCompat="@drawable/ic_icon_trolley" />
+
+        <ImageView
+            android:id="@+id/itemInNewApartment"
+            android:layout_width="18dp"
+            android:layout_height="17dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/itemRemoveFromTheList"
+            android:tint="@color/colorMediumGrayItemsIcon"
+            app:srcCompat="@drawable/ic_icon_house" />
+
+        <ImageView
+            android:id="@+id/itemRemoveFromTheList"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:tint="@color/colorMediumGrayItemsIcon"
+            app:srcCompat="@drawable/ic_icon_close"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</RelativeLayout>

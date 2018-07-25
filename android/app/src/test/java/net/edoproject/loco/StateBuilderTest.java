@@ -9,9 +9,12 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public class StateBuilderTest {
     @Test
-    public void addition_isCorrect() {
+    public void load_json() {
+        State sb = new State();
+        sb.load("src/main/res/raw/default_liet.json");
         assertEquals(4, 2 + 2);
     }
+
 }
