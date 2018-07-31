@@ -1,0 +1,87 @@
+[
+  {
+    "name": "kichen",
+    "expanded": true,
+    "items": [
+      {
+        "name": "plates",
+        "alreadyHave": true,
+        "inNewApartment": true,
+        "show": true
+
+      },
+      {
+        "name": "forks",
+        "alreadyHave": true,
+        "inNewApartment": false,
+        "show": true
+      },
+      {
+        "name": "owen",
+        "alreadyHave": false,
+        "inNewApartment": true,
+        "show": true
+      },
+      {
+        "name": "spullschrank",
+        "alreadyHave": false,
+        "inNewApartment": false,
+        "show": true
+      }
+    ]
+  },
+  {
+    "name": "salon",
+    "expanded": false,
+    "items": [
+      {
+        "name": "TV",
+        "alreadyHave": true,
+        "inNewApartment": false,
+        "show": true
+      },
+      {
+        "name": "sofa",
+        "alreadyHave": true,
+        "inNewApartment": false,
+        "show": true
+      },
+      {
+        "name": "fotels",
+        "alreadyHave": true,
+        "inNewApartment": false,
+        "show": true
+      }
+    ]
+  },
+  {
+    "name": "bedroom",
+    "expanded": true,
+    "items": [
+      {
+        "name": "double bed",
+        "alreadyHave": true,
+        "inNewApartment": false,
+        "show": true
+      },
+      {
+        "name": "wardrobe",
+        "alreadyHave": true,
+        "inNewApartment": false,
+        "show": true
+      },
+      {
+        "name": "carpet",
+        "alreadyHave": true,
+        "inNewApartment": false,
+        "show": true
+      },
+      {
+        "name": "lamp",
+        "alreadyHave": true,
+        "inNewApartment": false,
+        "show": true
+      }
+    ]
+  }
+]

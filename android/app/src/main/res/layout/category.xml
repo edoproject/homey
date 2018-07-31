@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemChecklistRowLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/categoryRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorMagentaCategoryRow">
+
+        <TextView
+            android:id="@+id/categoryName"
+            android:layout_width="fill_parent"
+            android:layout_height="32dp"
+            android:text="Category"
+            android:textSize="12dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="7dp"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentLeft="true"
+            />
+
+        <ImageView
+            android:id="@+id/categoryAlreadyHave"
+            android:layout_width="24dp"
+            android:layout_height="21dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/ic_icon_trolley"
+            android:tint="@color/colorWhite"
+            android:background="@color/colorMagentaCategoryRow"
+            android:layout_toLeftOf="@id/categoryInNewApartment"
+            />
+
+        <ImageView
+            android:id="@+id/categoryInNewApartment"
+            android:layout_width="18dp"
+            android:layout_height="17dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@drawable/ic_icon_house"
+            android:tint="@color/colorWhite"
+            android:background="@color/colorMagentaCategoryRow"
+            android:layout_toLeftOf="@id/categoryRemoveFromTheList"
+            />
+
+        <ImageView
+            android:id="@+id/categoryRemoveFromTheList"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/ic_icon_close"
+            android:tint="@color/colorWhite"
+            android:background="@color/colorMagentaCategoryRow"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_below="@id/categoryRow"
+        />
+
+</RelativeLayout>

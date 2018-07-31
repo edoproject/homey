@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLightGrayItemRows">#F7F7F7</color>
+    <color name="colorMediumGrayItemsIcon">#B5B5B5</color>
+    <color name="colorDarkGrayBorder">#707070</color>
+
+    <!-- Category -->
+    <color name="colorMagentaCategoryRow">#8E5082</color>
+
+    <!-- Button next -->
+    <color name="colorRedGradientStart">#FF0000</color>
+    <color name="colorYellowGradientEnd">#FFF500</color>
+
+    <color name="colorOrangeHomey">#FEA300</color>
+
+    <!-- App theme gradient -->
+    <color name="colorDarkBlueGradientStart">#747AC3</color>
+    <color name="colorMagentaGradientEnd">#904F80</color>
+
+    <color name="colorBlueItemText">#626DB4</color>
+
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
 </resources>
