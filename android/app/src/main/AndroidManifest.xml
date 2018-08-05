@@ -24,6 +24,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".RecycleListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.INTRO" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,26 +1,38 @@
 package net.edoproject.loco;
 
+import static net.edoproject.loco.Item.Action.KEEP;
+
 public class Item {
     private String name;
     private boolean alreadyHave;
     private boolean inNewApartment;
     private boolean show;
+    private Action action;
+
+    public enum Action {
+        KEEP,
+        DONATE,
+        DUMP
+    }
 
     public Item() {
         this.setName(name);
         this.setAlreadyHave(alreadyHave);
         this.setInNewApartment(inNewApartment);
         this.setShow(show);
+        this.setAction(KEEP);
     }
 
     public Item(String name,
                 boolean alreadyHave,
                 boolean inNewApartment,
-                boolean show) {
+                boolean show,
+                Action action) {
         this.setName(name);
         this.setAlreadyHave(alreadyHave);
         this.setInNewApartment(inNewApartment);
         this.setShow(show);
+        this.setAction(action);
     }
 
     public String getName() {
@@ -54,4 +66,8 @@ public class Item {
     public void setShow(boolean show) {
         this.show = show;
     }
+
+    public Action getAction() { return action; }
+
+    public void setAction(Action action) { this.action = action; }
 }
