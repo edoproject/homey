@@ -2,21 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/categoryChecklistRowLayout"
+    android:id="@+id/itemRecycleChecklistRowLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/categoryRow"
+        android:id="@+id/recycleCategoryRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@color/colorMagentaCategoryRow">
 
         <TextView
-            android:id="@+id/categoryName"
+            android:id="@+id/recycleCategoryName"
             android:layout_width="fill_parent"
             android:layout_height="32dp"
             android:text="Category"
@@ -28,36 +28,36 @@
             />
 
         <ImageView
-            android:id="@+id/categoryAlreadyHave"
-            android:layout_width="24dp"
-            android:layout_height="21dp"
+            android:id="@+id/recycleCategoryIkeepIt"
+            android:layout_width="12dp"
+            android:layout_height="14dp"
             android:layout_marginRight="35dp"
-            android:layout_marginTop="5dp"
-            app:srcCompat="@drawable/ic_icon_trolley"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/ic_take_with_me"
             android:tint="@color/colorWhite"
             android:background="@color/colorMagentaCategoryRow"
-            android:layout_toLeftOf="@id/categoryInNewApartment"
+            android:layout_toLeftOf="@id/recycleCategoryDonateIt"
             />
 
         <ImageView
-            android:id="@+id/categoryInNewApartment"
-            android:layout_width="18dp"
+            android:id="@+id/recycleCategoryDonateIt"
+            android:layout_width="16dp"
             android:layout_height="17dp"
             android:layout_marginRight="32dp"
             android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/ic_icon_house"
+            app:srcCompat="@drawable/ic_give_to_other"
             android:tint="@color/colorWhite"
             android:background="@color/colorMagentaCategoryRow"
-            android:layout_toLeftOf="@id/categoryRemoveFromTheList"
+            android:layout_toLeftOf="@id/recycleCategoryDumpIt"
             />
 
         <ImageView
-            android:id="@+id/categoryRemoveFromTheList"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/ic_icon_close"
+            android:id="@+id/recycleCategoryDumpIt"
+            android:layout_width="13dp"
+            android:layout_height="16dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@drawable/ic_trash"
             android:tint="@color/colorWhite"
             android:background="@color/colorMagentaCategoryRow"
             android:layout_alignParentRight="true"
@@ -65,11 +65,11 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/items"
+        android:id="@+id/recycleItems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        android:layout_below="@id/categoryRow"
+        android:layout_below="@id/recycleCategoryRow"
         />
 
 </RelativeLayout>

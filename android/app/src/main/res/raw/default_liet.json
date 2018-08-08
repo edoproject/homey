@@ -7,20 +7,23 @@
         "name": "plates",
         "alreadyHave": true,
         "inNewApartment": true,
-        "show": true
+        "show": true,
+        "action": "KEEP"
 
       },
       {
         "name": "forks",
         "alreadyHave": true,
         "inNewApartment": false,
-        "show": true
+        "show": true,
+        "action": "DONATE"
       },
       {
         "name": "owen",
         "alreadyHave": false,
         "inNewApartment": true,
-        "show": true
+        "show": true,
+        "action": "DUMP"
       },
       {
         "name": "spullschrank",
