@@ -31,12 +31,8 @@ public class ChecklistActivity extends AppCompatActivity {
         categoriesLayoutManager = new LinearLayoutManager(this);
         categoriesView.setLayoutManager(categoriesLayoutManager);
 
-        State state = new State();
+        State state = new State(this);
 
-        Resources resources = this.getResources();
-        InputStream inputStream = resources.openRawResource(R.raw.default_liet);
-
-        state.load(inputStream);
         List categories = state.getCategories();
 
         categoriesAdapter = new CategoriesAdapter(categories);

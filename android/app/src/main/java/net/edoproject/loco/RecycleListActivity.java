@@ -1,15 +1,13 @@
 package net.edoproject.loco;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-import java.io.InputStream;
 import java.util.List;
 
 public class RecycleListActivity extends AppCompatActivity {
+    private static final String TAG = RecycleListActivity.class.getSimpleName();
     private RecyclerView categoriesView;
     private RecyclerView.Adapter categoriesAdapter;
     private RecyclerView.LayoutManager categoriesLayoutManager;
@@ -31,12 +29,7 @@ public class RecycleListActivity extends AppCompatActivity {
         categoriesLayoutManager = new LinearLayoutManager(this);
         categoriesView.setLayoutManager(categoriesLayoutManager);
 
-        State state = new State();
-
-        Resources resources = this.getResources();
-        InputStream inputStream = resources.openRawResource(R.raw.default_liet);
-
-        state.load(inputStream);
+        State state = new State(this);
         List categories = state.getCategories();
 
         categoriesAdapter = new RecycleCategoriesAdapter(categories);
