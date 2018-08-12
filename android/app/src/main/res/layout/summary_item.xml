@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recycleItemChecklistRowLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorLightGrayItemRows">
+
+        <TextView
+            android:id="@+id/summaryItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Item"
+            android:textSize="12dp"
+            android:textColor="@color/colorBlueItemText"
+            android:paddingTop="9dp"
+            android:paddingLeft="16dp"
+            android:layout_alignParentLeft="true" />
+
+        <CheckBox
+            android:id="@+id/summaryItemCompleted"
+            android:layout_width="10dp"
+            android:layout_height="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemRecycleChecklistRowLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/summaryCategoryRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorMagentaCategoryRow">
+
+        <ImageView
+            android:id="@+id/summaryCategoryImage"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_icon_trolley"
+            android:tint="@color/colorWhite"
+            android:background="@color/colorMagentaCategoryRow"
+            />
+
+        <TextView
+            android:id="@+id/summaryCategoryName"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:layout_centerVertical="true"
+            android:text="Category"
+            android:textSize="16dp"
+            android:paddingLeft="62dp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/summaryCount"
+            android:layout_width="10dp"
+            android:layout_height="19dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="9dp"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:text="0"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorMagentaCategoryRow"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/summaryItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_below="@id/summaryCategoryRow"
+        />
+
+</RelativeLayout>

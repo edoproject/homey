@@ -1,23 +1,19 @@
 package net.edoproject.loco;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.InputType;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
-public class RecycleCategoriesAdapter extends RecyclerView.Adapter<RecycleCategoriesAdapter.ViewHolder> {
+public class SummaryCategoriesAdapter extends RecyclerView.Adapter<SummaryCategoriesAdapter.ViewHolder> {
     private List<Category> categories;
     private RecyclerView.LayoutManager itemsLayoutManager;
 
@@ -27,42 +23,42 @@ public class RecycleCategoriesAdapter extends RecyclerView.Adapter<RecycleCatego
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView textView;
-        private ImageView alreadyHaveView;
-        private ImageView inNewApartmentView;
-        private ImageView removeItemView;
+        public TextView countView;
         public RecyclerView itemsView;
+        private ImageView imageView;
         public View view;
 
         public ViewHolder(View v) {
             super(v);
-            textView = v.findViewById(R.id.recycleCategoryName);
-            alreadyHaveView = v.findViewById(R.id.recycleCategoryIkeepIt);
-            inNewApartmentView = v.findViewById(R.id.recycleCategoryDonateIt);
-            removeItemView = v.findViewById(R.id.recycleCategoryDumpIt);
-            itemsView = v.findViewById(R.id.recycleItems);
+            textView = v.findViewById(R.id.summaryCategoryName);
+            itemsView = v.findViewById(R.id.summaryItems);
+            countView = v.findViewById(R.id.summaryCount);
+            imageView = v.findViewById(R.id.summaryCategoryImage);
             view = v;
         }
 
         public TextView getTextView() { return textView; }
-        public ImageView getAlreadyHaveView() { return alreadyHaveView; }
-        public ImageView getInNewApartmentView() { return inNewApartmentView; }
-        public ImageView getRemoveItemView() { return removeItemView; }
-        public RecyclerView getItemsView() { return itemsView; }
+        public TextView getCountView() { return countView; }
+        public ImageView getImageView() { return imageView; }
         public View getCategoryView() { return view; }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RecycleCategoriesAdapter(List<Category> categories) {
+    public SummaryCategoriesAdapter(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public void set(List<Category> categories) {
         this.categories = categories;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public RecycleCategoriesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public SummaryCategoriesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                                   int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycle_category, parent, false);
+                .inflate(R.layout.summary_category, parent, false);
         return new ViewHolder(v);
     }
 
@@ -70,7 +66,7 @@ public class RecycleCategoriesAdapter extends RecyclerView.Adapter<RecycleCatego
         itemsLayoutManager = new LinearLayoutManager(holder.itemsView.getContext());
         holder.itemsView.setLayoutManager(itemsLayoutManager);
 
-        RecycleItemsAdapter itemsAdapter = new RecycleItemsAdapter(category.getItems());
+        SummaryItemsAdapter itemsAdapter = new SummaryItemsAdapter(category.getItems());
         holder.itemsView.setAdapter(itemsAdapter);
     }
 
@@ -82,6 +78,25 @@ public class RecycleCategoriesAdapter extends RecyclerView.Adapter<RecycleCatego
             // - replace the contents of the view with that element
             Category category = categories.get(position);
             holder.getTextView().setText(category.getName());
+            holder.getCountView().setText(Integer.toString(category.getItems().size()));
+
+            Resources resources = holder.view.getResources();
+
+            switch (category.getName()) {
+                case "Items to buy":
+                    holder.getImageView().setImageDrawable(resources.getDrawable(R.drawable.ic_icon_trolley));
+                    break;
+                case "Dupplicates":
+                    holder.getImageView().setImageDrawable(resources.getDrawable(R.drawable.ic_take_with_me));
+                    break;
+                case "To donate":
+                    holder.getImageView().setImageDrawable(resources.getDrawable(R.drawable.ic_give_to_other));
+                    break;
+                case "To dump":
+                    holder.getImageView().setImageDrawable(resources.getDrawable(R.drawable.ic_trash));
+                    break;
+            }
+
 
             holder.getCategoryView().setOnClickListener((view) -> {
                 if (category.isExpanded()) {
@@ -95,31 +110,6 @@ public class RecycleCategoriesAdapter extends RecyclerView.Adapter<RecycleCatego
                     category.setExpanded(true);
                     holder.itemsView.setVisibility(View.VISIBLE);
                 }
-            });
-
-            holder.getAlreadyHaveView().setOnClickListener((view) -> {
-                Toast toast = Toast.makeText(view.getContext(), "I already have them all", Toast.LENGTH_SHORT);
-                toast.show();
-                List<Item> items = category.getItems();
-                for (Item item: items) {
-                    item.setAlreadyHave(true);
-                }
-                holder.itemsView.getAdapter().notifyItemRangeChanged(0, items.size());
-            });
-
-            holder.getInNewApartmentView().setOnClickListener((view) -> {
-                Toast toast = Toast.makeText(view.getContext(), "I will have them all", Toast.LENGTH_SHORT);
-                toast.show();
-                List<Item> items = category.getItems();
-                for (Item item: items) {
-                    item.setInNewApartment(true);
-                }
-                holder.itemsView.getAdapter().notifyItemRangeChanged(0, items.size());
-            });
-
-            holder.getRemoveItemView().setOnClickListener((view) -> {
-                Toast toast = Toast.makeText(view.getContext(), "Removing item" + category.getName(), Toast.LENGTH_SHORT);
-                toast.show();
             });
 
             bindViewHolderToCategory(holder, category);
