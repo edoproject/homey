@@ -1,23 +1,21 @@
 package net.edoproject.loco;
 
-import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 
-import java.io.InputStream;
-import java.util.List;
-
-public class ChecklistActivity extends AppCompatActivity {
+public class ChecklistActivity extends StatefullActivity {
+    private static final String TAG = ChecklistActivity.class.getSimpleName();
     private RecyclerView categoriesView;
     private RecyclerView.Adapter categoriesAdapter;
     private RecyclerView.LayoutManager categoriesLayoutManager;
+    private ImageView nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
 
         setContentView(R.layout.activity_item_checklist);
 
@@ -31,11 +29,13 @@ public class ChecklistActivity extends AppCompatActivity {
         categoriesLayoutManager = new LinearLayoutManager(this);
         categoriesView.setLayoutManager(categoriesLayoutManager);
 
-        State state = new State(this);
-
-        List categories = state.getCategories();
-
-        categoriesAdapter = new CategoriesAdapter(categories);
+        categoriesAdapter = new CategoriesAdapter(getState().getCategories());
         categoriesView.setAdapter(categoriesAdapter);
+
+        nextButton = findViewById(R.id.item_checklist_next);
+        nextButton.setOnClickListener((view) -> {
+            Intent openIntroActivity =  new Intent("android.intent.action.RECYCLE");
+            startActivity(openIntroActivity);
+        });
     }
 }

@@ -1,12 +1,10 @@
 package net.edoproject.loco;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import java.util.List;
 
-public class RecycleListActivity extends AppCompatActivity {
+public class RecycleListActivity extends StatefullActivity {
     private static final String TAG = RecycleListActivity.class.getSimpleName();
     private RecyclerView categoriesView;
     private RecyclerView.Adapter categoriesAdapter;
@@ -15,7 +13,6 @@ public class RecycleListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
 
         setContentView(R.layout.activity_recycle_checklist);
 
@@ -29,10 +26,7 @@ public class RecycleListActivity extends AppCompatActivity {
         categoriesLayoutManager = new LinearLayoutManager(this);
         categoriesView.setLayoutManager(categoriesLayoutManager);
 
-        State state = new State(this);
-        List categories = state.getCategories();
-
-        categoriesAdapter = new RecycleCategoriesAdapter(categories);
+        categoriesAdapter = new RecycleCategoriesAdapter(getState().getCategories());
         categoriesView.setAdapter(categoriesAdapter);
     }
 }

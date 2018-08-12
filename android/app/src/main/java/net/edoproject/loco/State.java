@@ -21,12 +21,12 @@ public class State {
     private static final String TAG = State.class.getSimpleName();
     private static final String savedStateFilename = "state.json";
 
-    public State(Context context){
+    public State(Context context) {
         this.context = context;
         load(savedStateFilename);
     }
 
-    private void load(String filename){
+    private void load(String filename) {
         Log.d(TAG, "Trying to load the previous state");
         try {
             load(context.openFileInput(filename));
@@ -43,7 +43,7 @@ public class State {
         load(context.getResources().openRawResource(R.raw.default_liet));
     }
 
-    private void load(InputStream inputStream){
+    private void load(InputStream inputStream) {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
@@ -63,7 +63,11 @@ public class State {
         load();
     }
 
-    public void save(String filename){
+    public void reload() {
+        load(savedStateFilename);
+    }
+
+    private void save(String filename) {
         Log.d(TAG, "Saving state");
 
         ObjectMapper mapper = new ObjectMapper();
@@ -76,6 +80,10 @@ public class State {
         } catch (Exception e) {
             Log.e(TAG, "Exception", e);
         }
+    }
+
+    public void save() {
+        save(savedStateFilename);
     }
 
     public List<Category> getCategories() {

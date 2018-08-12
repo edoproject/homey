@@ -5,11 +5,13 @@ import android.content.DialogInterface;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +30,14 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         private ImageView alreadyHaveView;
         private ImageView inNewApartmentView;
         private ImageView removeItemView;
+        private RelativeLayout categoryLayout;
         public RecyclerView itemsView;
         public View view;
         public String newCategory;
 
         public ViewHolder(View v) {
             super(v);
+            categoryLayout = v.findViewById(R.id.categoryRow);
             textView = v.findViewById(R.id.categoryName);
             alreadyHaveView = v.findViewById(R.id.categoryAlreadyHave);
             inNewApartmentView = v.findViewById(R.id.categoryInNewApartment);
@@ -42,6 +46,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             view = v;
         }
 
+        public RelativeLayout getCategoryLayout() { return categoryLayout; }
         public TextView getTextView() { return textView; }
         public ImageView getAlreadyHaveView() { return alreadyHaveView; }
         public ImageView getInNewApartmentView() { return inNewApartmentView; }
@@ -126,6 +131,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         } else {
             TextView tv = holder.getTextView();
             tv.setText("Add category");
+
+            RelativeLayout categoryLayout = holder.getCategoryLayout();
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) categoryLayout.getLayoutParams();
+            params.bottomMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 128, categoryLayout.getContext().getResources().getDisplayMetrics());
+            categoryLayout.setLayoutParams(params);
+
             holder.getAlreadyHaveView().setVisibility(View.GONE);
             holder.getInNewApartmentView().setVisibility(View.GONE);
             holder.getRemoveItemView().setVisibility(View.GONE);
