@@ -29,7 +29,8 @@
         "name": "spullschrank",
         "alreadyHave": false,
         "inNewApartment": false,
-        "show": true
+        "show": true,
+        "action": "DUMP"
       }
     ]
   },
@@ -46,8 +47,9 @@
       {
         "name": "sofa",
         "alreadyHave": true,
-        "inNewApartment": false,
-        "show": true
+        "inNewApartment": true,
+        "show": true,
+        "action": "DUMP"
       },
       {
         "name": "fotels",
@@ -70,7 +72,7 @@
       {
         "name": "wardrobe",
         "alreadyHave": true,
-        "inNewApartment": false,
+        "inNewApartment": true,
         "show": true
       },
       {
@@ -82,7 +84,7 @@
       {
         "name": "lamp",
         "alreadyHave": true,
-        "inNewApartment": false,
+        "inNewApartment": true,
         "show": true
       }
     ]

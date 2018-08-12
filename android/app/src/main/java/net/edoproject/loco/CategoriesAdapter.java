@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
+    private final static String TAG = CategoriesAdapter.class.getSimpleName();
     private List<Category> categories;
     private RecyclerView.LayoutManager itemsLayoutManager;
 
@@ -33,7 +35,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         private RelativeLayout categoryLayout;
         public RecyclerView itemsView;
         public View view;
-        public String newCategory;
 
         public ViewHolder(View v) {
             super(v);
@@ -157,6 +158,9 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
                         Category category = new Category();
                         category.setName(newCategoryName);
                         categories.add(category);
+                        State.nameHierarchy(categories);
+                        Log.d(TAG, "Added category");
+                        Log.d(TAG, State.nameHierarchy(categories));
                         notifyItemInserted(categories.size()-1);
                         bindViewHolderToCategory(holder, category);
                     }

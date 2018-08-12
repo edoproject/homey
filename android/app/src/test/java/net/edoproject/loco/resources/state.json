@@ -1,0 +1,22 @@
+[
+  {
+    "name": "kichen",
+    "expanded": true,
+    "items": [
+      {
+        "name": "plates",
+        "alreadyHave": true,
+        "inNewApartment": true,
+        "show": true,
+        "action": "KEEP"
+      },
+      {
+        "name": "forks",
+        "alreadyHave": true,
+        "inNewApartment": false,
+        "show": true,
+        "action": "DONATE"
+      }
+    ]
+  }
+]
