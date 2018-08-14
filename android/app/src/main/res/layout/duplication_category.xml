@@ -10,14 +10,14 @@
     </data>
 
     <RelativeLayout
-        android:id="@+id/recycleCategoryRow"
+        android:id="@+id/duplicationCategoryRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@color/colorMagentaCategoryRow">
 
         <TextView
-            android:id="@+id/recycleCategoryName"
+            android:id="@+id/duplicationCategoryName"
             android:layout_width="fill_parent"
             android:layout_height="32dp"
             android:text="@{category.name, default=`Category`}"
@@ -30,7 +30,7 @@
             />
 
         <ImageView
-            android:id="@+id/recycleCategoryIkeepIt"
+            android:id="@+id/duplicationCategoryIkeepIt"
             android:layout_width="12dp"
             android:layout_height="14dp"
             android:layout_marginRight="35dp"
@@ -39,11 +39,11 @@
             android:tint="@color/colorWhite"
             android:onClick="@{() -> category.setAction(net.edoproject.loco.Item.Action.KEEP)}"
             android:background="@color/colorMagentaCategoryRow"
-            android:layout_toLeftOf="@id/recycleCategoryDonateIt"
+            android:layout_toLeftOf="@id/duplicationCategoryDonateIt"
             />
 
         <ImageView
-            android:id="@+id/recycleCategoryDonateIt"
+            android:id="@+id/duplicationCategoryDonateIt"
             android:layout_width="16dp"
             android:layout_height="17dp"
             android:layout_marginRight="32dp"
@@ -52,11 +52,11 @@
             android:tint="@color/colorWhite"
             android:onClick="@{() -> category.setAction(net.edoproject.loco.Item.Action.DONATE)}"
             android:background="@color/colorMagentaCategoryRow"
-            android:layout_toLeftOf="@id/recycleCategoryDumpIt"
+            android:layout_toLeftOf="@id/duplicationCategoryDumpIt"
             />
 
         <ImageView
-            android:id="@+id/recycleCategoryDumpIt"
+            android:id="@+id/duplicationCategoryDumpIt"
             android:layout_width="13dp"
             android:layout_height="16dp"
             android:layout_marginRight="17dp"
@@ -69,12 +69,12 @@
             />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycleItems"
+            android:id="@+id/duplicationItems"
             android:visibility="@{category.expanded ? android.support.v7.widget.RecyclerView.VISIBLE : android.support.v7.widget.RecyclerView.GONE}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:layout_below="@id/recycleCategoryName"
+            android:layout_below="@id/duplicationCategoryName"
             />
     </RelativeLayout>
 </layout>

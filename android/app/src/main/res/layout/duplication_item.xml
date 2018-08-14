@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recycleItemChecklistRowLayout" >
 
     <data>
@@ -17,10 +16,10 @@
         android:background="@color/colorLightGrayItemRows">
 
         <TextView
-            android:id="@+id/recycleItemName"
+            android:id="@+id/duplicationItemName"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:text="@{item.name, default=Item}"
+            android:text="@{item.name, default=`Item`}"
             android:textSize="12dp"
             android:textColor="@color/colorBlueItemText"
             android:paddingTop="9dp"
@@ -28,31 +27,31 @@
             android:layout_alignParentLeft="true" />
 
         <ImageView
-            android:id="@+id/recycleItemKeepIt"
+            android:id="@+id/duplicationItemKeepIt"
             android:layout_width="12dp"
             android:layout_height="11dp"
             android:layout_alignParentTop="true"
             android:layout_marginRight="35dp"
             android:layout_marginTop="13dp"
-            android:layout_toStartOf="@+id/recycleItemDonateIt"
+            android:layout_toStartOf="@+id/duplicationItemDonateIt"
             android:onClick="@{() -> item.setAction(net.edoproject.loco.Item.Action.KEEP)}"
             android:tint="@{item.action == net.edoproject.loco.Item.Action.KEEP ? @color/colorBlueItemText : @color/colorMediumGrayItemsIcon}"
             app:srcCompat="@drawable/ic_take_with_me" />
 
         <ImageView
-            android:id="@+id/recycleItemDonateIt"
+            android:id="@+id/duplicationItemDonateIt"
             android:layout_width="16dp"
             android:layout_height="17dp"
             android:layout_marginRight="32dp"
             android:layout_marginTop="8dp"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/recycleItemDumpIt"
+            android:layout_toStartOf="@+id/duplicationItemDumpIt"
             android:onClick="@{() -> item.setAction(net.edoproject.loco.Item.Action.DONATE)}"
             android:tint="@{item.action == net.edoproject.loco.Item.Action.DONATE ? @color/colorBlueItemText : @color/colorMediumGrayItemsIcon}"
             app:srcCompat="@drawable/ic_give_to_other" />
 
         <ImageView
-            android:id="@+id/recycleItemDumpIt"
+            android:id="@+id/duplicationItemDumpIt"
             android:layout_width="13dp"
             android:layout_height="16dp"
             android:layout_marginRight="17dp"

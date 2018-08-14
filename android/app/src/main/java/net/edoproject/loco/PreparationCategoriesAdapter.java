@@ -13,17 +13,17 @@ import android.view.ViewGroup;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import net.edoproject.loco.databinding.CategoryBinding;
+import net.edoproject.loco.databinding.PreparationCategoryBinding;
 import java.util.List;
 
-public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
-    private final static String TAG = CategoriesAdapter.class.getSimpleName();
+public class PreparationCategoriesAdapter extends RecyclerView.Adapter<PreparationCategoriesAdapter.ViewHolder> {
+    private final static String TAG = PreparationCategoriesAdapter.class.getSimpleName();
     private List<Category> categories;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private CategoryBinding binding;
+        private PreparationCategoryBinding binding;
 
-        public ViewHolder(CategoryBinding binding) {
+        public ViewHolder(PreparationCategoryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -34,19 +34,19 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         }
     }
 
-    public CategoriesAdapter(List<Category> categories) {
+    public PreparationCategoriesAdapter(List<Category> categories) {
         this.categories = categories;
     }
 
     @Override
-    public CategoriesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        CategoryBinding binding = CategoryBinding.inflate(LayoutInflater.from(parent.getContext()),
-                parent, false);
-        return new CategoriesAdapter.ViewHolder(binding);
+    public PreparationCategoriesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        PreparationCategoryBinding binding = PreparationCategoryBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false);
+        return new PreparationCategoriesAdapter.ViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(CategoriesAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(PreparationCategoriesAdapter.ViewHolder holder, int position) {
         if (position<categories.size()) {
             Category category = categories.get(position);
             holder.bind(category);
@@ -55,8 +55,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
                     = new LinearLayoutManager(holder.binding.items.getContext());
             holder.binding.items.setLayoutManager(itemsLayoutManager);
 
-            ItemsAdapter itemsAdapter = new ItemsAdapter(category.getItems());
-            holder.binding.items.setAdapter(itemsAdapter);
+            PreparationItemsAdapter preparationItemsAdapter = new PreparationItemsAdapter(category.getItems());
+            holder.binding.items.setAdapter(preparationItemsAdapter);
 
             holder.binding.categoryRemoveFromTheList.setOnClickListener((view) -> {
                 Toast toast = Toast.makeText(view.getContext(),

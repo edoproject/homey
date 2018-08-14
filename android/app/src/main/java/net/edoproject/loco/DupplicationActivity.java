@@ -7,8 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 
-public class RecycleListActivity extends StatefullActivity {
-    private static final String TAG = RecycleListActivity.class.getSimpleName();
+public class DupplicationActivity extends StatefullActivity {
+    private static final String TAG = DupplicationActivity.class.getSimpleName();
     private RecyclerView categoriesView;
     private RecyclerView.Adapter categoriesAdapter;
     private RecyclerView.LayoutManager categoriesLayoutManager;
@@ -18,9 +18,9 @@ public class RecycleListActivity extends StatefullActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_recycle_checklist);
+        setContentView(R.layout.duplication_activity);
 
-        categoriesView = findViewById(R.id.item_recycle_list_view);
+        categoriesView = findViewById(R.id.duplication_categories_view);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -30,10 +30,10 @@ public class RecycleListActivity extends StatefullActivity {
         categoriesLayoutManager = new LinearLayoutManager(this);
         categoriesView.setLayoutManager(categoriesLayoutManager);
 
-        categoriesAdapter = new RecycleCategoriesAdapter(getState().getDupplicates());
+        categoriesAdapter = new DupplicationCategoriesAdapter(getState().getDupplicates());
         categoriesView.setAdapter(categoriesAdapter);
 
-        nextButton = findViewById(R.id.recycle_checklist_next);
+        nextButton = findViewById(R.id.duplication_next);
         nextButton.setOnClickListener((view) -> {
             Log.d(TAG, "Next button");
             Intent openIntroActivity =  new Intent("android.intent.action.SUMMARY");
@@ -45,7 +45,7 @@ public class RecycleListActivity extends StatefullActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        categoriesAdapter = new RecycleCategoriesAdapter(getState().getDupplicates());
+        categoriesAdapter = new DupplicationCategoriesAdapter(getState().getDupplicates());
         categoriesView.setAdapter(categoriesAdapter);
     }
 }

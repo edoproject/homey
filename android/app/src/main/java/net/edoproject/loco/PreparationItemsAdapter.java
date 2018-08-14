@@ -10,17 +10,17 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import net.edoproject.loco.databinding.ItemBinding;
+import net.edoproject.loco.databinding.PreparationItemBinding;
 
 import java.util.List;
 
-public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
+public class PreparationItemsAdapter extends RecyclerView.Adapter<PreparationItemsAdapter.ViewHolder> {
     private List<Item> items;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private ItemBinding binding;
+        private PreparationItemBinding binding;
 
-        public ViewHolder(ItemBinding binding) {
+        public ViewHolder(PreparationItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -31,13 +31,13 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         }
     }
 
-    public ItemsAdapter(List<Item> items) {
+    public PreparationItemsAdapter(List<Item> items) {
         this.items = items;
     }
 
     @Override
-    public ItemsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemBinding itemBinding = ItemBinding.inflate(LayoutInflater.from(parent.getContext()),
+    public PreparationItemsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        PreparationItemBinding itemBinding = PreparationItemBinding.inflate(LayoutInflater.from(parent.getContext()),
                 parent, false);
         return new ViewHolder(itemBinding);
     }
