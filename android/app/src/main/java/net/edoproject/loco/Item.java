@@ -1,12 +1,16 @@
 package net.edoproject.loco;
 
+import android.databinding.BaseObservable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import static net.edoproject.loco.Item.Action.KEEP;
 
-public class Item {
+public class Item extends BaseObservable {
     private String name;
     private boolean alreadyHave;
     private boolean inNewApartment;
-    private boolean show;
+    private boolean completed;
     private Action action;
 
     public enum Action {
@@ -19,19 +23,19 @@ public class Item {
         this.setName(name);
         this.setAlreadyHave(alreadyHave);
         this.setInNewApartment(inNewApartment);
-        this.setShow(show);
+        this.setCompleted(completed);
         this.setAction(KEEP);
     }
 
     public Item(String name,
                 boolean alreadyHave,
                 boolean inNewApartment,
-                boolean show,
+                boolean completed,
                 Action action) {
         this.setName(name);
         this.setAlreadyHave(alreadyHave);
         this.setInNewApartment(inNewApartment);
-        this.setShow(show);
+        this.setCompleted(completed);
         this.setAction(action);
     }
 
@@ -49,6 +53,12 @@ public class Item {
 
     public void setAlreadyHave(boolean alreadyHave) {
         this.alreadyHave = alreadyHave;
+        notifyChange();
+    }
+
+    public void toogleAlreadyHave() {
+        setAlreadyHave(!isAlreadyHave());
+        setCompleted(false);
     }
 
     public boolean isInNewApartment() {
@@ -57,17 +67,37 @@ public class Item {
 
     public void setInNewApartment(boolean inNewApartment) {
         this.inNewApartment = inNewApartment;
+        notifyChange();
     }
 
-    public boolean isShow() {
-        return show;
+    public void toogleInNewAppartment() {
+        setInNewApartment(!isInNewApartment());
+        setCompleted(false);
     }
 
-    public void setShow(boolean show) {
-        this.show = show;
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+        notifyChange();
+    }
+
+    public void toogleCompleted() {
+        setCompleted(!isCompleted());
     }
 
     public Action getAction() { return action; }
 
-    public void setAction(Action action) { this.action = action; }
+    public void setAction(Action action) {
+        this.action = action;
+        setCompleted(false);
+        notifyChange();
+    }
+
+    @JsonIgnore
+    public boolean isDupplicate(){
+        return inNewApartment && alreadyHave;
+    }
 }

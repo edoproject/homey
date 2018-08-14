@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recycleItemChecklistRowLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recycleItemChecklistRowLayout" >
+
+    <data>
+        <variable
+            name="item"
+            type="net.edoproject.loco.Item" />
+    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +18,7 @@
             android:id="@+id/summaryItemName"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:text="Item"
+            android:text="@{item.name, default=Item}"
             android:textSize="12dp"
             android:textColor="@color/colorBlueItemText"
             android:paddingTop="9dp"
@@ -25,10 +27,13 @@
 
         <CheckBox
             android:id="@+id/summaryItemCompleted"
-            android:layout_width="10dp"
-            android:layout_height="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="18dp"
-            android:layout_marginTop="10dp" />
+            android:checked="@{item.completed}"
+            android:onClick="@{() -> item.toogleCompleted()}"
+            android:layout_marginRight="18dp" />
     </RelativeLayout>
-</RelativeLayout>
+</layout>

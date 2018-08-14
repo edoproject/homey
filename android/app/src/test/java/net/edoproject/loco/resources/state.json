@@ -7,14 +7,14 @@
         "name": "plates",
         "alreadyHave": true,
         "inNewApartment": true,
-        "show": true,
+        "completed": true,
         "action": "KEEP"
       },
       {
         "name": "forks",
         "alreadyHave": true,
         "inNewApartment": false,
-        "show": true,
+        "completed": true,
         "action": "DONATE"
       }
     ]

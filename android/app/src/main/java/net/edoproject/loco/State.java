@@ -40,7 +40,7 @@ public class State {
 
     private void load(){
         Log.d(TAG, "Loading initial state");
-        load(context.getResources().openRawResource(R.raw.default_liet));
+        load(context.getResources().openRawResource(R.raw.defaults));
     }
 
     private void load(InputStream inputStream) {
@@ -97,7 +97,7 @@ public class State {
         List<Item> itemsToBuy = toBuy.getItems();
         summary.add(toBuy);
 
-        Category dupplicates = new Category("Dupplicates", true, new ArrayList<>());
+        Category dupplicates = new Category("Dupplicates to keep", true, new ArrayList<>());
         List<Item> itemsDupplicates = dupplicates.getItems();
         summary.add(dupplicates);
 
@@ -115,13 +115,13 @@ public class State {
                 if (!item.isAlreadyHave() && !item.isInNewApartment()) {
                     itemsToBuy.add(item);
                 }
-                if (item.isAlreadyHave() && item.isInNewApartment()) {
+                if (item.isDupplicate() && (item.getAction() == Item.Action.KEEP)) {
                     itemsDupplicates.add(item);
                 }
-                if (item.getAction() == Item.Action.DONATE) {
+                if (item.isDupplicate() && (item.getAction() == Item.Action.DONATE)) {
                     itemsToDonate.add(item);
                 }
-                if (item.getAction() == Item.Action.DUMP) {
+                if (item.isDupplicate() && (item.getAction() == Item.Action.DUMP)) {
                     itemsJunk.add(item);
                 }
             }
@@ -129,6 +129,17 @@ public class State {
 
         Log.d(TAG, "getSummary: \n" + nameHierarchy(summary));
         return summary;
+    }
+
+    public List<Category> getDupplicates() {
+        List<Category> dupplicates = new ArrayList<>();
+        for (Category category : categories) {
+            List<Item> items = category.getDupplicates();
+            if (!items.isEmpty()) {
+                dupplicates.add(new Category(category.getName(), true, items));
+            }
+        }
+        return dupplicates;
     }
 
     public void setCategories(List<Category> categories) {
