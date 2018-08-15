@@ -37,7 +37,7 @@ public class PreparationActivity extends StatefullActivity {
         nextButton.setOnClickListener((view) -> {
             Log.d(TAG, "Next button");
             getState().save();
-            Intent openIntroActivity =  new Intent("android.intent.action.RECYCLE");
+            Intent openIntroActivity =  new Intent("android.intent.action.DUPLICATION_INTRO");
             startActivity(openIntroActivity);
         });
     }

@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 } finally {
-                    Intent openIntroActivity =  new Intent("android.intent.action.CHECKLIST");
+                    Intent openIntroActivity =  new Intent("android.intent.action.PREPARATION_INTRO");
                     startActivity(openIntroActivity);
                 }
             }

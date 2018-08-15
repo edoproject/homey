@@ -39,7 +39,6 @@ public class DupplicationActivity extends StatefullActivity {
             Intent openIntroActivity =  new Intent("android.intent.action.SUMMARY");
             startActivity(openIntroActivity);
         });
-
     }
 
     @Override
