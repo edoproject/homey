@@ -34,7 +34,8 @@
             android:text="Get rid of junk"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
-            android:textStyle="bold" />
+            />
+
     </com.github.florent37.shapeofview.shapes.ArcView>
 
     <com.github.florent37.shapeofview.shapes.CircleView
