@@ -1,8 +1,10 @@
 package net.edoproject.loco;
 
+import android.databinding.BaseObservable;
+
 import static net.edoproject.loco.Item.Action.KEEP;
 
-public class Item {
+public class Item extends BaseObservable {
     private String name;
     private boolean alreadyHave;
     private boolean inNewApartment;
@@ -51,12 +53,22 @@ public class Item {
         this.alreadyHave = alreadyHave;
     }
 
+    public void toogleAlreadyHave() {
+        setAlreadyHave(!isAlreadyHave());
+        notifyChange();
+    }
+
     public boolean isInNewApartment() {
         return inNewApartment;
     }
 
     public void setInNewApartment(boolean inNewApartment) {
         this.inNewApartment = inNewApartment;
+    }
+
+    public void toogleInNewAppartment() {
+        setInNewApartment(!isInNewApartment());
+        notifyChange();
     }
 
     public boolean isShow() {
