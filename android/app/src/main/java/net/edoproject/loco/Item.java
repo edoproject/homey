@@ -81,5 +81,8 @@ public class Item extends BaseObservable {
 
     public Action getAction() { return action; }
 
-    public void setAction(Action action) { this.action = action; }
+    public void setAction(Action action) {
+        this.action = action;
+        notifyChange();
+    }
 }
