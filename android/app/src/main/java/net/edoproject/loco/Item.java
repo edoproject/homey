@@ -8,7 +8,7 @@ public class Item extends BaseObservable {
     private String name;
     private boolean alreadyHave;
     private boolean inNewApartment;
-    private boolean show;
+    private boolean completed;
     private Action action;
 
     public enum Action {
@@ -21,19 +21,19 @@ public class Item extends BaseObservable {
         this.setName(name);
         this.setAlreadyHave(alreadyHave);
         this.setInNewApartment(inNewApartment);
-        this.setShow(show);
+        this.setCompleted(completed);
         this.setAction(KEEP);
     }
 
     public Item(String name,
                 boolean alreadyHave,
                 boolean inNewApartment,
-                boolean show,
+                boolean completed,
                 Action action) {
         this.setName(name);
         this.setAlreadyHave(alreadyHave);
         this.setInNewApartment(inNewApartment);
-        this.setShow(show);
+        this.setCompleted(completed);
         this.setAction(action);
     }
 
@@ -71,12 +71,13 @@ public class Item extends BaseObservable {
         notifyChange();
     }
 
-    public boolean isShow() {
-        return show;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    public void setShow(boolean show) {
-        this.show = show;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+        notifyChange();
     }
 
     public Action getAction() { return action; }

@@ -40,7 +40,7 @@ public class State {
 
     private void load(){
         Log.d(TAG, "Loading initial state");
-        load(context.getResources().openRawResource(R.raw.default_liet));
+        load(context.getResources().openRawResource(R.raw.defaults));
     }
 
     private void load(InputStream inputStream) {

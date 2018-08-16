@@ -7,7 +7,7 @@
         "name": "plates",
         "alreadyHave": true,
         "inNewApartment": true,
-        "show": true,
+        "completed": false,
         "action": "KEEP"
 
       },
@@ -15,21 +15,21 @@
         "name": "forks",
         "alreadyHave": true,
         "inNewApartment": false,
-        "show": true,
+        "completed": false,
         "action": "DONATE"
       },
       {
         "name": "owen",
         "alreadyHave": false,
         "inNewApartment": true,
-        "show": true,
+        "completed": true,
         "action": "DUMP"
       },
       {
         "name": "spullschrank",
         "alreadyHave": false,
         "inNewApartment": false,
-        "show": true,
+        "completed": true,
         "action": "DUMP"
       }
     ]
@@ -42,20 +42,20 @@
         "name": "TV",
         "alreadyHave": true,
         "inNewApartment": false,
-        "show": true
+        "completed": true
       },
       {
         "name": "sofa",
         "alreadyHave": true,
         "inNewApartment": true,
-        "show": true,
+        "completed": true,
         "action": "DUMP"
       },
       {
         "name": "fotels",
         "alreadyHave": true,
         "inNewApartment": false,
-        "show": true
+        "completed": true
       }
     ]
   },
@@ -67,25 +67,25 @@
         "name": "double bed",
         "alreadyHave": true,
         "inNewApartment": false,
-        "show": true
+        "completed": true
       },
       {
         "name": "wardrobe",
         "alreadyHave": true,
         "inNewApartment": true,
-        "show": true
+        "completed": true
       },
       {
         "name": "carpet",
         "alreadyHave": true,
         "inNewApartment": false,
-        "show": true
+        "completed": true
       },
       {
         "name": "lamp",
         "alreadyHave": true,
         "inNewApartment": true,
-        "show": true
+        "completed": true
       }
     ]
   }
