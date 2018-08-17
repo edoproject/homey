@@ -73,7 +73,7 @@ public class SummaryCategoriesAdapter extends RecyclerView.Adapter<SummaryCatego
         switch (name) {
             case "Items to buy":
                 return R.drawable.ic_icon_trolley;
-            case "Dupplicates":
+            case "Dupplicates to keep":
                 return R.drawable.ic_take_with_me;
             case "To donate":
                 return R.drawable.ic_give_to_other;

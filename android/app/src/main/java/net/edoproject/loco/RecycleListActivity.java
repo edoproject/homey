@@ -30,7 +30,7 @@ public class RecycleListActivity extends StatefullActivity {
         categoriesLayoutManager = new LinearLayoutManager(this);
         categoriesView.setLayoutManager(categoriesLayoutManager);
 
-        categoriesAdapter = new RecycleCategoriesAdapter(getState().getCategories());
+        categoriesAdapter = new RecycleCategoriesAdapter(getState().getDupplicates());
         categoriesView.setAdapter(categoriesAdapter);
 
         nextButton = findViewById(R.id.recycle_checklist_next);
@@ -45,7 +45,7 @@ public class RecycleListActivity extends StatefullActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        categoriesAdapter = new RecycleCategoriesAdapter(getState().getCategories());
+        categoriesAdapter = new RecycleCategoriesAdapter(getState().getDupplicates());
         categoriesView.setAdapter(categoriesAdapter);
     }
 }

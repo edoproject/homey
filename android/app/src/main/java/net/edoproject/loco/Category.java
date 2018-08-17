@@ -85,4 +85,14 @@ public class Category extends BaseObservable {
             item.setAction(action);
         }
     }
+
+    public List<Item> getDupplicates() {
+        List<Item> dupplicates = new ArrayList<>();
+        for (Item item : items) {
+            if (item.isDupplicate()){
+                dupplicates.add(item);
+            }
+        }
+        return dupplicates;
+    }
 }

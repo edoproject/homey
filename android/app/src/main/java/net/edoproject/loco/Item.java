@@ -2,6 +2,8 @@ package net.edoproject.loco;
 
 import android.databinding.BaseObservable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import static net.edoproject.loco.Item.Action.KEEP;
 
 public class Item extends BaseObservable {
@@ -92,5 +94,10 @@ public class Item extends BaseObservable {
         this.action = action;
         setCompleted(false);
         notifyChange();
+    }
+
+    @JsonIgnore
+    public boolean isDupplicate(){
+        return inNewApartment && alreadyHave;
     }
 }
