@@ -51,11 +51,11 @@ public class Item extends BaseObservable {
 
     public void setAlreadyHave(boolean alreadyHave) {
         this.alreadyHave = alreadyHave;
+        notifyChange();
     }
 
     public void toogleAlreadyHave() {
         setAlreadyHave(!isAlreadyHave());
-        notifyChange();
     }
 
     public boolean isInNewApartment() {
@@ -64,11 +64,11 @@ public class Item extends BaseObservable {
 
     public void setInNewApartment(boolean inNewApartment) {
         this.inNewApartment = inNewApartment;
+        notifyChange();
     }
 
     public void toogleInNewAppartment() {
         setInNewApartment(!isInNewApartment());
-        notifyChange();
     }
 
     public boolean isCompleted() {

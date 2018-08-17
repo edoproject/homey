@@ -1,6 +1,7 @@
 package net.edoproject.loco;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,146 +9,82 @@ import android.text.InputType;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
+import net.edoproject.loco.databinding.CategoryBinding;
 import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
     private final static String TAG = CategoriesAdapter.class.getSimpleName();
     private List<Category> categories;
-    private RecyclerView.LayoutManager itemsLayoutManager;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public TextView textView;
-        private ImageView alreadyHaveView;
-        private ImageView inNewApartmentView;
-        private ImageView removeItemView;
-        private RelativeLayout categoryLayout;
-        public RecyclerView itemsView;
-        public View view;
+        private CategoryBinding binding;
 
-        public ViewHolder(View v) {
-            super(v);
-            categoryLayout = v.findViewById(R.id.categoryRow);
-            textView = v.findViewById(R.id.categoryName);
-            alreadyHaveView = v.findViewById(R.id.categoryAlreadyHave);
-            inNewApartmentView = v.findViewById(R.id.categoryInNewApartment);
-            removeItemView = v.findViewById(R.id.categoryRemoveFromTheList);
-            itemsView = v.findViewById(R.id.items);
-            view = v;
+        public ViewHolder(CategoryBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
-        public RelativeLayout getCategoryLayout() { return categoryLayout; }
-        public TextView getTextView() { return textView; }
-        public ImageView getAlreadyHaveView() { return alreadyHaveView; }
-        public ImageView getInNewApartmentView() { return inNewApartmentView; }
-        public ImageView getRemoveItemView() { return removeItemView; }
-        public RecyclerView getItemsView() { return itemsView; }
-        public View getCategoryView() { return view; }
+        public void bind(Category category) {
+            binding.setCategory(category);
+            binding.executePendingBindings();
+        }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public CategoriesAdapter(List<Category> categories) {
         this.categories = categories;
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
-    public CategoriesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                           int viewType) {
-        // create a new view
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.category, parent, false);
-        return new ViewHolder(v);
+    public CategoriesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        CategoryBinding binding = CategoryBinding.inflate(LayoutInflater.from(parent.getContext()),
+                parent, false);
+        return new CategoriesAdapter.ViewHolder(binding);
     }
 
-    private void bindViewHolderToCategory(ViewHolder holder, Category category){
-        itemsLayoutManager = new LinearLayoutManager(holder.itemsView.getContext());
-        holder.itemsView.setLayoutManager(itemsLayoutManager);
-
-        ItemsAdapter itemsAdapter = new ItemsAdapter(category.getItems());
-        holder.itemsView.setAdapter(itemsAdapter);
-    }
-
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        if ( position<categories.size() ) {
-            // - get element from your dataset at this position
-            // - replace the contents of the view with that element
+    public void onBindViewHolder(CategoriesAdapter.ViewHolder holder, int position) {
+        if (position<categories.size()) {
             Category category = categories.get(position);
-            holder.getTextView().setText(category.getName());
+            holder.bind(category);
 
-            holder.getCategoryView().setOnClickListener((view) -> {
-                if (category.isExpanded()) {
-                    Toast toast = Toast.makeText(view.getContext(), "collapsing", Toast.LENGTH_SHORT);
-                    toast.show();
-                    category.setExpanded(false);
-                    holder.itemsView.setVisibility(View.GONE);
-                } else {
-                    Toast toast = Toast.makeText(view.getContext(), "expanding", Toast.LENGTH_SHORT);
-                    toast.show();
-                    category.setExpanded(true);
-                    holder.itemsView.setVisibility(View.VISIBLE);
-                }
-            });
+            RecyclerView.LayoutManager itemsLayoutManager
+                    = new LinearLayoutManager(holder.binding.items.getContext());
+            holder.binding.items.setLayoutManager(itemsLayoutManager);
 
-            holder.getAlreadyHaveView().setOnClickListener((view) -> {
-                Toast toast = Toast.makeText(view.getContext(), "I already have them all", Toast.LENGTH_SHORT);
-                toast.show();
-                List<Item> items = category.getItems();
-                for (Item item: items) {
-                    item.setAlreadyHave(true);
-                }
-                holder.itemsView.getAdapter().notifyItemRangeChanged(0, items.size());
-            });
+            ItemsAdapter itemsAdapter = new ItemsAdapter(category.getItems());
+            holder.binding.items.setAdapter(itemsAdapter);
 
-            holder.getInNewApartmentView().setOnClickListener((view) -> {
-                Toast toast = Toast.makeText(view.getContext(), "I will have them all", Toast.LENGTH_SHORT);
-                toast.show();
-                List<Item> items = category.getItems();
-                for (Item item: items) {
-                    item.setInNewApartment(true);
-                }
-                holder.itemsView.getAdapter().notifyItemRangeChanged(0, items.size());
-            });
-
-            holder.getRemoveItemView().setOnClickListener((view) -> {
-                Toast toast = Toast.makeText(view.getContext(), "Removing item" + category.getName(), Toast.LENGTH_SHORT);
+            holder.binding.categoryRemoveFromTheList.setOnClickListener((view) -> {
+                Toast toast = Toast.makeText(view.getContext(),
+                        "Removing item" + category.getName(), Toast.LENGTH_SHORT);
                 toast.show();
                 removeAt(position);
             });
-
-            bindViewHolderToCategory(holder, category);
         } else {
-            TextView tv = holder.getTextView();
-            tv.setText("Add category");
+            Category category = new Category();
+            holder.bind(category);
+            holder.binding.categoryName.setText("Add category");
 
-            RelativeLayout categoryLayout = holder.getCategoryLayout();
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) categoryLayout.getLayoutParams();
-            params.bottomMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 128, categoryLayout.getContext().getResources().getDisplayMetrics());
-            categoryLayout.setLayoutParams(params);
+            Context context = holder.binding.categoryRow.getContext();
+            // Only one layout per data binding, so the RecyclerView will be the layout
+            ((RecyclerView.LayoutParams)holder.binding.categoryRow.getLayoutParams()).bottomMargin
+                    = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                            128, context.getResources().getDisplayMetrics());
 
-            holder.getAlreadyHaveView().setVisibility(View.GONE);
-            holder.getInNewApartmentView().setVisibility(View.GONE);
-            holder.getRemoveItemView().setVisibility(View.GONE);
-            holder.getItemsView().setVisibility(View.GONE);
-            tv.setOnClickListener((view) -> {
-                AlertDialog.Builder builder = new AlertDialog.Builder(tv.getContext());
+            holder.binding.categoryAlreadyHave.setVisibility(View.GONE);
+            holder.binding.categoryInNewApartment.setVisibility(View.GONE);
+            holder.binding.categoryRemoveFromTheList.setVisibility(View.GONE);
+            holder.binding.items.setVisibility(View.GONE);
+
+            holder.binding.categoryName.setOnClickListener((view) -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Add category");
 
-                // Set up the input
-                final EditText input = new EditText(tv.getContext());
+                final EditText input = new EditText(context);
                 input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
 
@@ -162,7 +99,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
                         Log.d(TAG, "Added category");
                         Log.d(TAG, State.nameHierarchy(categories));
                         notifyItemInserted(categories.size()-1);
-                        bindViewHolderToCategory(holder, category);
+                        holder.bind(category);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -182,7 +119,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         notifyItemRangeChanged(position, categories.size());
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return categories.size() + 1;

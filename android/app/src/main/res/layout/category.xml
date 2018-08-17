@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/categoryChecklistRowLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <data>
+        <variable
+            name="category"
+            type="net.edoproject.loco.Category" />
+    </data>
 
     <RelativeLayout
         android:id="@+id/categoryRow"
@@ -19,10 +19,11 @@
             android:id="@+id/categoryName"
             android:layout_width="fill_parent"
             android:layout_height="32dp"
-            android:text="Category"
+            android:text="@{category.name, default=`Add category`}"
             android:textSize="12dp"
             android:paddingLeft="16dp"
             android:paddingTop="7dp"
+            android:onClick="@{() -> category.toogleExpanded()}"
             android:textColor="@color/colorWhite"
             android:layout_alignParentLeft="true"
             />
@@ -33,6 +34,7 @@
             android:layout_height="21dp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="5dp"
+            android:onClick="@{() -> category.toogleAlreadyHave()}"
             app:srcCompat="@drawable/ic_icon_trolley"
             android:tint="@color/colorWhite"
             android:background="@color/colorMagentaCategoryRow"
@@ -45,6 +47,7 @@
             android:layout_height="17dp"
             android:layout_marginRight="32dp"
             android:layout_marginTop="8dp"
+            android:onClick="@{() -> category.toogleInNewApartment()}"
             app:srcCompat="@drawable/ic_icon_house"
             android:tint="@color/colorWhite"
             android:background="@color/colorMagentaCategoryRow"
@@ -62,14 +65,14 @@
             android:background="@color/colorMagentaCategoryRow"
             android:layout_alignParentRight="true"
             />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/items"
+            android:visibility="@{category.expanded ? android.support.v7.widget.RecyclerView.VISIBLE : android.support.v7.widget.RecyclerView.GONE}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:layout_below="@id/categoryName"
+            />
     </RelativeLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/items"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:layout_below="@id/categoryRow"
-        />
-
-</RelativeLayout>
+</layout>
