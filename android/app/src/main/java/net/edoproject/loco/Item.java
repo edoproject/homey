@@ -56,6 +56,7 @@ public class Item extends BaseObservable {
 
     public void toogleAlreadyHave() {
         setAlreadyHave(!isAlreadyHave());
+        setCompleted(false);
     }
 
     public boolean isInNewApartment() {
@@ -69,6 +70,7 @@ public class Item extends BaseObservable {
 
     public void toogleInNewAppartment() {
         setInNewApartment(!isInNewApartment());
+        setCompleted(false);
     }
 
     public boolean isCompleted() {
@@ -80,10 +82,15 @@ public class Item extends BaseObservable {
         notifyChange();
     }
 
+    public void toogleCompleted() {
+        setCompleted(!isCompleted());
+    }
+
     public Action getAction() { return action; }
 
     public void setAction(Action action) {
         this.action = action;
+        setCompleted(false);
         notifyChange();
     }
 }
