@@ -1,9 +1,7 @@
 package net.edoproject.loco;
 
 import android.databinding.BaseObservable;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,6 +77,12 @@ public class Category extends BaseObservable {
         completed = !completed;
         for (Item item: items) {
             item.setCompleted(!completed);
+        }
+    }
+
+    public void setAction(Item.Action action) {
+        for (Item item: items) {
+            item.setAction(action);
         }
     }
 }
