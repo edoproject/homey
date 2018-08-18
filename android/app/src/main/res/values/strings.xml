@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Homey</string>
+    <string name="title_activity_preparation_intro">PreparationIntroActivity</string>
 </resources>

@@ -3,7 +3,6 @@
     package="net.edoproject.loco">
     android:versionCode="1"
     android:versionName="1.0"
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_house_heart"
@@ -14,27 +13,44 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".PreparationIntroActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.PREPARATION_INTRO" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".PreparationActivity">
             <intent-filter>
-                <action android:name="android.intent.action.CHECKLIST" />
+                <action android:name="android.intent.action.PREPARATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DuplicationIntroActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.DUPLICATION_INTRO" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".DupplicationActivity">
             <intent-filter>
-                <action android:name="android.intent.action.RECYCLE" />
+                <action android:name="android.intent.action.DUPLICATION" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".SummaryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SUMMARY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

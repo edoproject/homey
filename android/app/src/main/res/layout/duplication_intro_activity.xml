@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DupplicationActivity"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <com.github.florent37.shapeofview.shapes.ArcView
+        android:id="@+id/arc_head_duplication_activity"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:elevation="4dp"
+        app:shape_arc_cropDirection="outside"
+        app:shape_arc_height="10dp"
+        app:shape_arc_position="bottom"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gradient_dark_blue_magenta" />
+
+        <TextView
+            android:id="@+id/arc_head_duplication_activity_head_text"
+            android:layout_width="134dp"
+            android:layout_height="19dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="Get rid of junk"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </com.github.florent37.shapeofview.shapes.ArcView>
+
+    <com.github.florent37.shapeofview.shapes.CircleView
+        android:id="@+id/circle_head_duplication_activity_view"
+        android:foregroundGravity="top"
+        android:layout_height="88dp"
+        android:layout_width="88dp"
+        android:layout_centerHorizontal="true"
+        app:shape_circle_borderColor="@color/colorLightGrayItemRows"
+        app:shape_circle_borderWidth="1dp"
+        android:layout_marginTop="50dp"
+        android:elevation="10dp"
+        >
+
+        <ImageView
+            android:background="@color/colorWhite"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            />
+
+        <ImageView
+            android:background="@color/colorWhite"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_icon_recycle"/>
+    </com.github.florent37.shapeofview.shapes.CircleView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="There are some items in your inventory \nyou will find in the new flat"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="29dp"
+        android:textColor="@color/colorBlueItemText"
+        android:layout_marginTop="87dp"
+        android:layout_below="@id/arc_head_duplication_activity"
+        android:textStyle="bold"
+        android:textSize="16dp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="135dp"
+        android:layout_below="@id/arc_head_duplication_activity"
+        android:columnCount="2"
+        android:rowCount="6">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="32dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="56dp"
+            android:layout_marginRight="18dp"
+            android:layout_rowSpan="2"
+            android:layout_gravity="fill"
+            app:srcCompat="@drawable/ic_take_with_me" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Mark what do you keep"
+            android:textColor="@color/colorBlueItemText"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:text="Tell landlord, what should she/he remove \nuntil you movie in."
+            android:textColor="@color/colorBlueItemText"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="36dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="56dp"
+            android:layout_marginRight="18dp"
+            android:layout_rowSpan="2"
+            android:layout_gravity="fill"
+            app:srcCompat="@drawable/ic_give_to_other" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Donate something"
+            android:textColor="@color/colorBlueItemText"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:text="Browse your items you do not need. \nYou might not need it, but someone will."
+            android:textColor="@color/colorBlueItemText"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="18dp"
+            android:layout_rowSpan="2"
+            android:layout_gravity="fill"
+            app:srcCompat="@drawable/ic_trash" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Remove the junks"
+            android:textColor="@color/colorBlueItemText"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:text="Some items may be heavily dagmaged. \nDid you consider to throw them away?"
+            android:textColor="@color/colorBlueItemText"
+            android:textSize="12dp" />
+    </GridLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:elevation="5dp"
+        android:layout_alignParentBottom="true"
+        android:alpha="0.5"
+        android:src="@color/colorWhite"
+        />
+
+    <com.github.florent37.shapeofview.shapes.RoundRectView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_alignParentBottom="true"
+        app:shape_roundRect_topLeftRadius="32dp"
+        app:shape_roundRect_topRightRadius="32dp"
+        app:shape_roundRect_bottomRightRadius="32dp"
+        app:shape_roundRect_bottomLeftRadius="32dp"
+
+        android:elevation="10dp">
+        <ImageView
+            android:id="@+id/duplication_intro_next"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gradient_red_yellow_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Next"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"/>
+
+    </com.github.florent37.shapeofview.shapes.RoundRectView>
+
+</RelativeLayout>
