@@ -14,7 +14,7 @@ public class SummaryActivity extends StatefullActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_summary_checklist);
+        setContentView(R.layout.summary_activity);
 
         categoriesView = findViewById(R.id.item_summary_list_view);
 

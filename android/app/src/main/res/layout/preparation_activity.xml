@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_checklist_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecycleListActivity"
+    tools:context=".PreparationActivity"
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
     <com.github.florent37.shapeofview.shapes.ArcView
-        android:id="@+id/arc_head_summary_list_view"
+        android:id="@+id/arc_head_preparation_activity"
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:elevation="4dp"
@@ -25,8 +26,8 @@
             android:src="@drawable/gradient_dark_blue_magenta" />
 
         <TextView
-            android:id="@+id/arc_head_summary_list_head_text"
-            android:text="Summary"
+            android:id="@+id/arc_head_preparation_activity_head_text"
+            android:text="Do the items list"
             android:layout_gravity="center"
             android:layout_marginBottom="30dp"
             android:textSize="16dp"
@@ -36,67 +37,61 @@
             android:layout_width="134dp"
             android:layout_height="19dp"
             />
+
+        <TextView
+            android:id="@+id/arc_head_preparation_activity_body_text"
+            android:text="Check, what you already have at hole and what is in the new apartment."
+            android:layout_gravity="center"
+            android:textSize="12dp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_width="296dp"
+            android:layout_height="35dp"
+            />
+
     </com.github.florent37.shapeofview.shapes.ArcView>
 
     <TextView
-        android:id="@+id/summaryAllIsReadyText"
-        android:layout_below="@id/circle_head_summary_list_view"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/textInOld"
+        android:layout_below="@id/arc_head_preparation_activity"
+        android:layout_toLeftOf="@id/textInNew"
         android:layout_marginRight="5dp"
-        android:text="All is ready"
-        android:textSize="16dp"
+        android:text="I already have"
+        android:textSize="10dp"
         android:textColor="@color/colorBlueItemText"
         android:textAlignment="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="40dp"
+        android:layout_height="31dp" />
 
     <TextView
-        android:id="@+id/summaryItIsOverText"
-        android:layout_below="@id/summaryAllIsReadyText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginRight="5dp"
-        android:text="It is end of planning. Time to move."
-        android:textSize="12dp"
-        android:layout_marginTop="13dp"
+        android:id="@+id/textInNew"
+        android:layout_below="@id/arc_head_preparation_activity"
+        android:layout_toLeftOf="@id/textRemoveFromTheList"
+        android:layout_marginRight="0dp"
+        android:text="in new appartment"
+        android:textSize="10dp"
         android:textColor="@color/colorBlueItemText"
         android:textAlignment="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="56dp"
+        android:layout_height="31dp" />
 
-    <com.github.florent37.shapeofview.shapes.CircleView
-        android:id="@+id/circle_head_summary_list_view"
-        android:foregroundGravity="top"
-        android:layout_height="88dp"
-        android:layout_width="88dp"
-        android:layout_centerHorizontal="true"
-        app:shape_circle_borderColor="@color/colorLightGrayItemRows"
-        app:shape_circle_borderWidth="1dp"
-        android:layout_marginTop="50dp"
-        android:elevation="10dp"
-        >
-
-        <ImageView
-            android:background="@color/colorWhite"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_gravity="center"
-            />
-
-        <ImageView
-            android:background="@color/colorWhite"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_icon_superman"/>
-
-    </com.github.florent37.shapeofview.shapes.CircleView>
+    <TextView
+        android:id="@+id/textRemoveFromTheList"
+        android:layout_below="@id/arc_head_preparation_activity"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:textAlignment="center"
+        android:text="remove it"
+        android:textSize="10dp"
+        android:textColor="@color/colorBlueItemText"
+        android:layout_width="40dp"
+        android:layout_height="31dp" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/item_summary_list_view"
+        android:id="@+id/preparation_categories_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/summaryItIsOverText"
-        android:paddingTop="25dp"
+        android:layout_below="@id/textRemoveFromTheList"
         />
 
     <ImageView
@@ -106,16 +101,17 @@
         android:layout_alignParentBottom="true"
         android:alpha="0.5"
         android:src="@color/colorWhite"
+
         />
 
     <com.github.florent37.shapeofview.shapes.RoundRectView
         android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginBottom="32dp"
         android:layout_marginTop="32dp"
-        android:layout_alignParentBottom="true"
         app:shape_roundRect_topLeftRadius="32dp"
         app:shape_roundRect_topRightRadius="32dp"
         app:shape_roundRect_bottomRightRadius="32dp"
@@ -123,7 +119,7 @@
 
         android:elevation="10dp">
         <ImageView
-            android:id="@+id/summary_checklist_next"
+            android:id="@+id/item_checklist_next"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -134,9 +130,10 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Send summary"
+            android:text="Next"
             android:textSize="18dp"
             android:textStyle="bold"
             android:textColor="@color/colorWhite"/>
     </com.github.florent37.shapeofview.shapes.RoundRectView>
+
 </RelativeLayout>

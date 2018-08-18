@@ -20,7 +20,7 @@
             android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:text="@{item.name, default=Add item}"
+            android:text="@{item.name, default=`Add item`}"
             android:textSize="12dp"
             android:textColor="@color/colorBlueItemText"
             android:paddingTop="9dp"

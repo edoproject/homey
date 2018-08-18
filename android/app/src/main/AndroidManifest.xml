@@ -17,13 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChecklistActivity">
+        <activity android:name=".PreparationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.CHECKLIST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecycleListActivity">
+        <activity android:name=".DupplicationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.RECYCLE" />
                 <category android:name="android.intent.category.DEFAULT" />

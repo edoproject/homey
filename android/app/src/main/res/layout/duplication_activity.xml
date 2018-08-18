@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecycleListActivity"
+    tools:context=".DupplicationActivity"
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
     <com.github.florent37.shapeofview.shapes.ArcView
-        android:id="@+id/arc_head_recycle_list_view"
+        android:id="@+id/arc_head_duplication_activity"
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:elevation="4dp"
@@ -25,7 +25,7 @@
             android:src="@drawable/gradient_dark_blue_magenta" />
 
         <TextView
-            android:id="@+id/arc_head_recycle_list_head_text"
+            android:id="@+id/arc_head_duplication_activity_head_text"
             android:text="Get rid of redundant stuff"
             android:layout_gravity="center"
             android:layout_marginBottom="30dp"
@@ -40,7 +40,7 @@
 
 
     <com.github.florent37.shapeofview.shapes.CircleView
-        android:id="@+id/circle_head_recycle_list_view"
+        android:id="@+id/circle_head_duplication_activity_view"
         android:foregroundGravity="top"
         android:layout_height="88dp"
         android:layout_width="88dp"
@@ -68,7 +68,7 @@
 
     <TextView
         android:id="@+id/textKeepIt"
-        android:layout_below="@id/arc_head_recycle_list_view"
+        android:layout_below="@id/arc_head_duplication_activity"
         android:layout_toLeftOf="@id/textDonateIt"
         android:layout_marginRight="5dp"
         android:text="Keep it"
@@ -80,7 +80,7 @@
 
     <TextView
         android:id="@+id/textDonateIt"
-        android:layout_below="@id/arc_head_recycle_list_view"
+        android:layout_below="@id/arc_head_duplication_activity"
         android:layout_toLeftOf="@id/textDumpTheJunk"
         android:layout_marginRight="0dp"
         android:text="Donation"
@@ -92,7 +92,7 @@
 
     <TextView
         android:id="@+id/textDumpTheJunk"
-        android:layout_below="@id/arc_head_recycle_list_view"
+        android:layout_below="@id/arc_head_duplication_activity"
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"
         android:textAlignment="center"
@@ -103,7 +103,7 @@
         android:layout_height="31dp" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/item_recycle_list_view"
+        android:id="@+id/duplication_categories_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textDumpTheJunk"
@@ -133,7 +133,7 @@
 
         android:elevation="10dp">
         <ImageView
-            android:id="@+id/recycle_checklist_next"
+            android:id="@+id/duplication_next"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"

@@ -10,7 +10,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.splash_activity);
 
         Thread timer = new Thread(){
             public void run(){
