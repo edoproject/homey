@@ -77,10 +77,10 @@ public class PreparationItemsAdapter extends RecyclerView.Adapter<PreparationIte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String newItemName = input.getText().toString();
-                        Item item = new Item();
-                        item.setName(newItemName);
-                        items.add(item);
-                        notifyItemInserted(items.size()-1);
+                        Item new_item = new Item();
+                        new_item.setName(newItemName);
+                        items.add(new_item);
+                        notifyItemInserted(items.size() - 1);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

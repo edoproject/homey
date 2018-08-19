@@ -45,18 +45,22 @@ public class PreparationCategoriesAdapter extends RecyclerView.Adapter<Preparati
         return new PreparationCategoriesAdapter.ViewHolder(binding);
     }
 
+    private void bindItems(PreparationCategoriesAdapter.ViewHolder holder, Category category) {
+        RecyclerView.LayoutManager itemsLayoutManager
+                = new LinearLayoutManager(holder.binding.items.getContext());
+        holder.binding.items.setLayoutManager(itemsLayoutManager);
+
+        PreparationItemsAdapter preparationItemsAdapter = new PreparationItemsAdapter(category.getItems());
+        holder.binding.items.setAdapter(preparationItemsAdapter);
+    }
+
     @Override
     public void onBindViewHolder(PreparationCategoriesAdapter.ViewHolder holder, int position) {
         if (position<categories.size()) {
             Category category = categories.get(position);
             holder.bind(category);
 
-            RecyclerView.LayoutManager itemsLayoutManager
-                    = new LinearLayoutManager(holder.binding.items.getContext());
-            holder.binding.items.setLayoutManager(itemsLayoutManager);
-
-            PreparationItemsAdapter preparationItemsAdapter = new PreparationItemsAdapter(category.getItems());
-            holder.binding.items.setAdapter(preparationItemsAdapter);
+            bindItems(holder, category);
 
             holder.binding.categoryRemoveFromTheList.setOnClickListener((view) -> {
                 Toast toast = Toast.makeText(view.getContext(),
@@ -92,14 +96,11 @@ public class PreparationCategoriesAdapter extends RecyclerView.Adapter<Preparati
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String newCategoryName = input.getText().toString();
-                        Category category = new Category();
-                        category.setName(newCategoryName);
-                        categories.add(category);
-                        State.nameHierarchy(categories);
-                        Log.d(TAG, "Added category");
-                        Log.d(TAG, State.nameHierarchy(categories));
-                        notifyItemInserted(categories.size()-1);
-                        holder.bind(category);
+                        Category new_category = new Category();
+                        new_category.setName(newCategoryName);
+                        categories.add(new_category);
+                        bindItems(holder, new_category);
+                        notifyItemInserted(categories.size() - 1);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
