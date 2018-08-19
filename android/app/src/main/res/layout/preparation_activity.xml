@@ -33,23 +33,38 @@
             android:textSize="16dp"
             android:gravity="center"
             android:textColor="#FFFFFF"
-            android:textStyle="bold"
             android:layout_width="134dp"
             android:layout_height="19dp"
             />
 
-        <TextView
-            android:id="@+id/arc_head_preparation_activity_body_text"
-            android:text="Check, what you already have at hole and what is in the new apartment."
+    </com.github.florent37.shapeofview.shapes.ArcView>
+
+    <com.github.florent37.shapeofview.shapes.CircleView
+        android:id="@+id/circle_head_duplication_activity_view"
+        android:foregroundGravity="top"
+        android:layout_height="88dp"
+        android:layout_width="88dp"
+        android:layout_centerHorizontal="true"
+        app:shape_circle_borderColor="@color/colorLightGrayItemRows"
+        app:shape_circle_borderWidth="1dp"
+        android:layout_marginTop="50dp"
+        android:elevation="10dp"
+        >
+
+        <ImageView
+            android:background="@color/colorWhite"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_gravity="center"
-            android:textSize="12dp"
-            android:textColor="#FFFFFF"
-            android:gravity="center"
-            android:layout_width="296dp"
-            android:layout_height="35dp"
             />
 
-    </com.github.florent37.shapeofview.shapes.ArcView>
+        <ImageView
+            android:background="@color/colorWhite"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_homey_logo"/>
+    </com.github.florent37.shapeofview.shapes.CircleView>
 
     <TextView
         android:id="@+id/textInOld"

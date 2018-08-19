@@ -32,12 +32,10 @@
             android:textSize="16dp"
             android:gravity="center"
             android:textColor="#FFFFFF"
-            android:textStyle="bold"
             android:layout_width="134dp"
             android:layout_height="19dp"
             />
     </com.github.florent37.shapeofview.shapes.ArcView>
-
 
     <com.github.florent37.shapeofview.shapes.CircleView
         android:id="@+id/circle_head_duplication_activity_view"
